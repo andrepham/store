@@ -14,18 +14,18 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import store.model.dto.SubscribingUserDTO;
-import store.model.validator.SubscribeValidator;
-import store.service.UserSubscribeService;
+import store.model.validator.SubscriptionValidator;
+import store.service.SubscriptionService;
 
 @Controller
 @RequestMapping("/welcome")
 @SessionAttributes("subscribingUser")
 public class WelcomeController {
 	
-	private UserSubscribeService userSubscribeService;
-	private SubscribeValidator subscribeValidator;
+	private SubscriptionService subscriptionService;
+	private SubscriptionValidator subscriptionValidator;
 	@RequestMapping(method=RequestMethod.GET)
-	public String myform(Model model) {
+	public String subscribe(Model model) {
 		model.addAttribute("today", Calendar.getInstance());
 		model.addAttribute("subscribingUser", new SubscribingUserDTO());
 		
@@ -44,9 +44,9 @@ public class WelcomeController {
 	
 	@RequestMapping(method=RequestMethod.POST)
 	public String submitForm(@ModelAttribute("subscribingUser") SubscribingUserDTO userSubscribeDTO, BindingResult result, SessionStatus status) {
-		subscribeValidator.validate(userSubscribeDTO, result);
+		subscriptionValidator.validate(userSubscribeDTO, result);
 		if(!result.hasErrors()){
-			userSubscribeService.storeUser(userSubscribeDTO);
+			subscriptionService.storeUser(userSubscribeDTO);
 			return "redirect:welcome/subscribeSuccess";
 		}
 		else{
@@ -55,13 +55,13 @@ public class WelcomeController {
 	}
 
 	@Required
-	public void setUserSubscribeService(UserSubscribeService userSubscribeService) {
-		this.userSubscribeService = userSubscribeService;
+	public void setSubscriptionService(SubscriptionService subscriptionService) {
+		this.subscriptionService = subscriptionService;
 	}
 
 	@Required
-	public void setSubscribeValidator(SubscribeValidator subscribeValidator) {
-		this.subscribeValidator = subscribeValidator;
+	public void setSubscriptionValidator(SubscriptionValidator subscriptionValidator) {
+		this.subscriptionValidator = subscriptionValidator;
 	}
 	
 	

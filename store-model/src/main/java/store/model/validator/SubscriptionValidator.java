@@ -11,7 +11,7 @@ import org.springframework.validation.Validator;
 
 import store.model.dto.SubscribingUserDTO;
 
-public class SubscribeValidator implements Validator{
+public class SubscriptionValidator implements Validator{
 
 	@Override
 	public boolean supports(Class<?> arg0) {
@@ -21,7 +21,8 @@ public class SubscribeValidator implements Validator{
 	
 	@Override
 	public void validate(Object target, Errors errors) {
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "required.firstName","First name is required.");		
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "required.firstName","First name is required.");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "required.firstName","First name is required.");	
 	}
 	
 	private boolean isEmail(String string){

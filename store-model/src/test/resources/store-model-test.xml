@@ -4,5 +4,5 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 
-	<bean id="subscribeValidator" class="store.model.validator.SubscribeValidator" lazy-init="false"></bean>
+	<bean id="subscriptionValidator" class="store.model.validator.SubscriptionValidator" lazy-init="false"></bean>
 </beans>

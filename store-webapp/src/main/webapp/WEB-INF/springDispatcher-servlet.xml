@@ -29,11 +29,11 @@
         <property name="basename" value="message.messages"></property>
     </bean>
     
-    <bean id="subscribeValidator" class="store.model.validator.SubscribeValidator">
+    <bean id="subscriptionValidator" class="store.model.validator.SubscriptionValidator">
     </bean>
 	
 	<bean id="welcomeController" class="store.webapp.controller.WelcomeController">
-	   <property name="userSubscribeService" ref="userSubscribeService"></property>
-	   <property name="subscribeValidator" ref="subscribeValidator"></property>
+	   <property name="subscriptionService" ref="subscriptionService"></property>
+	   <property name="subscriptionValidator" ref="subscriptionValidator"></property>
 	</bean>
 </beans>

@@ -9,7 +9,7 @@ import store.model.User;
 import store.model.dto.SubscribingUserDTO;
 
 
-public class UserSubscribeService {
+public class SubscriptionService {
 
 	private UserDao userDao;
 	

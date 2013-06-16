@@ -5,12 +5,12 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import store.service.UserSubscribeService;
+import store.service.SubscriptionService;
 
-public class UserSubscribeServiceTest {
+public class SubscriptionServiceTest {
 
 	@Autowired
-	private UserSubscribeService userSubscribeService;
+	private SubscriptionService subscriptionService;
 	
 	@Test
 	public void test() {

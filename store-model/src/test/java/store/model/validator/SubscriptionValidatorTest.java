@@ -14,11 +14,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @ContextConfiguration(locations={"/store-model-test.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
-public class SubscribeValidatorTest{
+public class SubscriptionValidatorTest{
 
 	
-	@Resource(name="subscribeValidator")
-	private SubscribeValidator subscribeValidator;
+	@Resource(name="subscriptionValidator")
+	private SubscriptionValidator subscriptionValidator;
 	
 	@Test
 	public void test() {
@@ -26,11 +26,11 @@ public class SubscribeValidatorTest{
 		String notEmail = "abcd5_e";
 		
 		try {
-			Method method = subscribeValidator.getClass().getDeclaredMethod("isEmail", String.class);
+			Method method = subscriptionValidator.getClass().getDeclaredMethod("isEmail", String.class);
 			method.setAccessible(true);
-			boolean isEmail =(Boolean)method.invoke(subscribeValidator, email);
+			boolean isEmail =(Boolean)method.invoke(subscriptionValidator, email);
 			Assert.assertTrue(isEmail);
-//			isEmail =(Boolean)method.invoke(subscribeValidator, notEmail);
+//			isEmail =(Boolean)method.invoke(subscriptionValidator, notEmail);
 //			Assert.assertFalse(isEmail);
 		} catch (SecurityException e) {
 			// TODO Auto-generated catch block
