@@ -1,6 +1,6 @@
 package store.model.dto;
 
-public class SubscribingUserDTO {
+public class SubscriptionDTO {
 
 	private String firstName;
 	private String lastName;

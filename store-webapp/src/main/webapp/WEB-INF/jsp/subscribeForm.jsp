@@ -20,7 +20,7 @@
 <body>
 <h3>Today is ${today}</h3>
 
-<form:form method="post" modelAttribute="subscribingUser">
+<form:form method="post" modelAttribute="subscription">
 <form:errors path="*" cssClass="error"/>
 <table>
     <tr>

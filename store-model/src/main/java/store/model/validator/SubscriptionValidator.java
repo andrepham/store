@@ -9,20 +9,24 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import store.model.dto.SubscribingUserDTO;
+import store.model.dto.SubscriptionDTO;
 
 public class SubscriptionValidator implements Validator{
 
 	@Override
 	public boolean supports(Class<?> arg0) {
 		// TODO Auto-generated method stub
-		return SubscribingUserDTO.class.isAssignableFrom(arg0);
+		return SubscriptionDTO.class.isAssignableFrom(arg0);
 	}
 	
 	@Override
 	public void validate(Object target, Errors errors) {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "required.firstName","First name is required.");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "required.firstName","First name is required.");	
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "required.email","Email is required.");
+		SubscriptionDTO subscriptionDTO = (SubscriptionDTO)target;
+		if(!isEmail(subscriptionDTO.getEmail())){
+			errors.rejectValue("email", "format.email", "Not an email");
+		}
 	}
 	
 	private boolean isEmail(String string){

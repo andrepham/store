@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import store.model.dto.SubscribingUserDTO;
+import store.model.dto.SubscriptionDTO;
 import store.model.validator.SubscriptionValidator;
 import store.service.SubscriptionService;
 
 @Controller
 @RequestMapping("/welcome")
-@SessionAttributes("subscribingUser")
+@SessionAttributes("subscription")
 public class WelcomeController {
 	
 	private SubscriptionService subscriptionService;
@@ -27,7 +27,7 @@ public class WelcomeController {
 	@RequestMapping(method=RequestMethod.GET)
 	public String subscribe(Model model) {
 		model.addAttribute("today", Calendar.getInstance());
-		model.addAttribute("subscribingUser", new SubscribingUserDTO());
+		model.addAttribute("subscription", new SubscriptionDTO());
 		
 		return "subscribeForm";
 	}
@@ -43,10 +43,10 @@ public class WelcomeController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public String submitForm(@ModelAttribute("subscribingUser") SubscribingUserDTO userSubscribeDTO, BindingResult result, SessionStatus status) {
-		subscriptionValidator.validate(userSubscribeDTO, result);
+	public String submitForm(@ModelAttribute("subscription") SubscriptionDTO subscriptionDTO, BindingResult result, SessionStatus status) {
+		subscriptionValidator.validate(subscriptionDTO, result);
 		if(!result.hasErrors()){
-			subscriptionService.storeUser(userSubscribeDTO);
+			subscriptionService.storeUser(subscriptionDTO);
 			return "redirect:welcome/subscribeSuccess";
 		}
 		else{

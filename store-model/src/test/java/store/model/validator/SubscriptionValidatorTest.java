@@ -30,22 +30,15 @@ public class SubscriptionValidatorTest{
 			method.setAccessible(true);
 			boolean isEmail =(Boolean)method.invoke(subscriptionValidator, email);
 			Assert.assertTrue(isEmail);
-//			isEmail =(Boolean)method.invoke(subscriptionValidator, notEmail);
-//			Assert.assertFalse(isEmail);
 		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
