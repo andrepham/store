@@ -14,7 +14,13 @@
 <body>
 <h3>SubscribeSuccess</h3>
 
-
+<table>
+    <tr>
+        <td>First name: </td>
+        <td>${subscription.firstName}</td>
+    </tr>
+    
+</table>
 <%-- <h3><c:out value="${requestScope['andre']}" default="Inconnu"/></h3> --%>
 
 </body>
